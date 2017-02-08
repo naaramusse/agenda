@@ -71,4 +71,9 @@ public class Aluno {
     }
 
 
+    public String toString(){
+        return nome;
+    }
+
+
 }

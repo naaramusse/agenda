@@ -22,12 +22,22 @@ public class FormularioHelper {
 
     public FormularioHelper(FormularioActivity activity){
         nome = (EditText) activity.findViewById(R.id.formulario_nome);
+        email = (EditText) activity.findViewById(R.id.formulario_email);
+        endereco = (EditText) activity.findViewById(R.id.formulario_endereco);
+        site = (EditText) activity.findViewById(R.id.formulario_site);
+        telefone = (EditText) activity.findViewById(R.id.formulario_telefone);
+        nota = (RatingBar) activity.findViewById(R.id.formulario_nota);
 
         aluno = new Aluno();
     }
 
-    public Aluno getAluno(){
+    public Aluno pegaAluno(){
         aluno.setNome(nome.getText().toString());
+        aluno.setEmail(email.getText().toString());
+        aluno.setEndereco(endereco.getText().toString());
+        aluno.setSite(site.getText().toString());
+        aluno.setTelefone(telefone.getText().toString());
+        aluno.setNota(nota.getRating());
 
         return aluno;
     }
