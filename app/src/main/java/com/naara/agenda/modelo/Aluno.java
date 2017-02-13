@@ -1,10 +1,12 @@
 package com.naara.agenda.modelo;
 
+import java.io.Serializable;
+
 /**
  * Created by naara on 07/02/17.
  */
 
-public class Aluno {
+public class Aluno implements Serializable {
 
     private long id;
     private String nome;
@@ -74,6 +76,8 @@ public class Aluno {
     public String toString(){
         return nome;
     }
+
+
 
 
 }

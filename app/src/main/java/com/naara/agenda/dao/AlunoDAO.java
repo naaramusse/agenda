@@ -17,6 +17,7 @@ import java.util.List;
  */
 
 public class AlunoDAO extends SQLiteOpenHelper {
+
     public AlunoDAO(Context context) {
         super(context, "listaDB", null, 1);
     }
@@ -40,16 +41,22 @@ public class AlunoDAO extends SQLiteOpenHelper {
 
     }
 
-    public void insere(Aluno aluno){
-        SQLiteDatabase db = getWritableDatabase();
-
+    public ContentValues pegaDadosAluno(Aluno aluno){
         ContentValues dados = new ContentValues();
         dados.put("nome", aluno.getNome());
         dados.put("endereco", aluno.getEndereco());
+        dados.put("telefone", aluno.getTelefone());
         dados.put("site", aluno.getSite());
         dados.put("email", aluno.getEmail());
-        dados.put("telefone", aluno.getTelefone());
         dados.put("nota", aluno.getNota());
+
+        return dados;
+    }
+
+    public void insere(Aluno aluno){
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues dados = pegaDadosAluno(aluno);
 
         db.insert("Alunos", null, dados);
     }
@@ -78,5 +85,24 @@ public class AlunoDAO extends SQLiteOpenHelper {
         }
         c.close();
         return alunos;
+    }
+
+    public void deleta(Aluno aluno){
+        SQLiteDatabase db = getWritableDatabase();
+
+        String[] args = {String.valueOf(aluno.getId())};
+
+        db.delete("Alunos", "id = ?", args);
+
+    }
+
+    public void alteraAluno(Aluno aluno) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues dados = pegaDadosAluno(aluno);
+
+        String[] args = {String.valueOf(aluno.getId())};
+
+        db.update("Alunos", dados, "id = ?", args);
     }
 }

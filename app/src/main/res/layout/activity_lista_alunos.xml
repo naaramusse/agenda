@@ -16,6 +16,7 @@
         android:text="+"
         android:textSize="40dp"
         android:textColor="#ffffff"
+        android:background="@drawable/fundo"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="16dp"
