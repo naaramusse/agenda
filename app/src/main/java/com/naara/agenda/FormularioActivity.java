@@ -1,6 +1,7 @@
 package com.naara.agenda;
 
 import android.content.Intent;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
@@ -24,13 +26,22 @@ public class FormularioActivity extends AppCompatActivity {
 
         helper = new FormularioHelper(this);
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
 
         Aluno aluno = (Aluno) intent.getSerializableExtra("aluno");
 
         if (aluno != null){
             helper.preencheFormulario(aluno);
         }
+
+        ImageButton novaFoto = (ImageButton) findViewById(R.id.nova_foto);
+        novaFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, 564);
+            }
+        });
 
     }
 
@@ -49,7 +60,7 @@ public class FormularioActivity extends AppCompatActivity {
 
                 AlunoDAO dao = new AlunoDAO(this);
 
-                if (String.valueOf(aluno.getId()) == null){
+                if (aluno.getId() == null){
                     dao.insere(aluno);
                 } else {
                     dao.alteraAluno(aluno);

@@ -67,7 +67,6 @@ public class ListaAlunosActivity extends AppCompatActivity {
                 Aluno aluno = (Aluno) listaAlunos.getItemAtPosition(position);
 
                 Intent intent = new Intent(ListaAlunosActivity.this, FormularioActivity.class);
-                startActivity(intent);
                 intent.putExtra("aluno", aluno);
                 startActivity(intent);
                 //Toast.makeText(ListaAlunosActivity.this, aluno.getNome().toString(), Toast.LENGTH_SHORT).show();

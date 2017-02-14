@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 public class Aluno implements Serializable {
 
-    private long id;
+    private Long id;
     private String nome;
     private String endereco;
     private String telefone;
@@ -16,7 +16,7 @@ public class Aluno implements Serializable {
     private String email;
     private double nota;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
