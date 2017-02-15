@@ -1,5 +1,7 @@
 package com.naara.agenda.modelo;
 
+import android.media.Image;
+
 import java.io.Serializable;
 
 /**
@@ -15,6 +17,15 @@ public class Aluno implements Serializable {
     private String site;
     private String email;
     private double nota;
+ //   private String foto;
+
+//    public String getFoto() {
+//        return foto;
+//    }
+//
+//    public void setFoto(String foto) {
+//        this.foto = foto;
+//    }
 
     public Long getId() {
         return id;

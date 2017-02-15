@@ -1,6 +1,10 @@
 package com.naara.agenda;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.provider.ContactsContract;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 
 import com.naara.agenda.modelo.Aluno;
@@ -17,6 +21,7 @@ public class FormularioHelper {
     private EditText site;
     private EditText telefone;
     private RatingBar nota;
+    private ImageView foto;
 
     private Aluno aluno;
 
@@ -28,8 +33,23 @@ public class FormularioHelper {
         email = (EditText) activity.findViewById(R.id.formulario_email);
         nota = (RatingBar) activity.findViewById(R.id.formulario_nota);
 
+//        if (aluno.getFoto() != null){
+//            carregarFoto(aluno.getFoto());
+//        }
+
         aluno = new Aluno();
     }
+
+//    public void carregarFoto(String localFoto){
+//
+//        Bitmap foto = BitmapFactory.decodeFile(localFoto);
+//
+//        Bitmap fotoReduzida = Bitmap.createScaledBitmap(foto, 100, 100, true);
+//
+//        aluno.setFoto(localFoto);
+//
+//        this.foto.setImageBitmap(fotoReduzida);
+//    }
 
     public Aluno pegaAluno(){
         aluno.setNome(nome.getText().toString());
